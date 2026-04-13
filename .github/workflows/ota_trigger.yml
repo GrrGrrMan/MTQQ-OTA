@@ -1,0 +1,24 @@
+name: OTA Trigger
+
+on:
+  push:
+    paths:
+      - 'firmware.bin'    # only fires when firmware actually changes
+      - 'firmware.md5'
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish MQTT trigger
+        run: |
+          pip install paho-mqtt
+          python3 -c "
+          import paho.mqtt.publish as publish
+          publish.single(
+            'riceenesp/1u2398', 
+            '1',
+            hostname='broker.hivemq.com',
+            port=1883
+          )
+          "

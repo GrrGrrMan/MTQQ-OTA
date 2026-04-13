@@ -1,0 +1,18 @@
+# Credentials — never commit this
+secrets.h 
+ 
+# PlatformIO build output
+.pio/
+ 
+# VS Code workspace settings
+.vscode/
+
+platformio.ini
+
+AlphaESPCAM.code-workspace
+
+.venv
+
+include
+
+lib
